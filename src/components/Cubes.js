@@ -5,7 +5,7 @@ import Cube from './Cube';
 const Cubes = () => {
     const [cubes] = useStore((state) => [state.cubes]);
 
-    console.log(cubes);
+    // console.log(cubes);
 
     return cubes.map(({ key, pos, texture }) => {
         return (
