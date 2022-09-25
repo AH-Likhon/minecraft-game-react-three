@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-const actionByKey = (key) => {
+function actionByKey(key) {
     const keyActionMap = {
         KeyW: 'moveForward',
         KeyS: 'moveBackward',
@@ -12,9 +12,8 @@ const actionByKey = (key) => {
         Digit3: 'glass',
         Digit4: 'wood',
         Digit5: 'log',
-    };
-
-    return keyActionMap[key];
+    }
+    return keyActionMap[key]
 }
 
 export const useKeyBoard = () => {
@@ -29,43 +28,40 @@ export const useKeyBoard = () => {
         glass: false,
         wood: false,
         log: false,
-    });
+    })
 
     const handleKeyDown = useCallback((e) => {
-        const action = actionByKey(e.code);
+        const action = actionByKey(e.code)
         if (action) {
-            setActions(prev => {
+            setActions((prev) => {
                 return ({
                     ...prev,
                     [action]: true
                 })
             })
-        };
-    }, []);
+        }
+    }, [])
 
     const handleKeyUp = useCallback((e) => {
-        const action = actionByKey(e.code);
+        const action = actionByKey(e.code)
         if (action) {
-            setActions(prev => {
+            setActions((prev) => {
                 return ({
                     ...prev,
                     [action]: false
                 })
             })
-        };
-    }, []);
+        }
+    }, [])
 
     useEffect(() => {
-        document.addEventListener('keydown', handleKeyDown);
-        document.addEventListener('keyup', handleKeyUp);
-
+        document.addEventListener('keydown', handleKeyDown)
+        document.addEventListener('keyup', handleKeyUp)
         return () => {
-            document.removeEventListener('keydown', handleKeyDown);
-            document.removeEventListener('keyup', handleKeyUp);
+            document.removeEventListener('keydown', handleKeyDown)
+            document.removeEventListener('keyup', handleKeyUp)
         }
-    }, [handleKeyDown, handleKeyUp]);
+    }, [handleKeyDown, handleKeyUp])
 
-    // console.log('actions', actions);
-
-    return actions;
+    return actions
 };

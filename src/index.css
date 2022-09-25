@@ -53,10 +53,15 @@ body {
   color: #fff;
 }
 
-.texture-selector{
+.texture-selector {
   transform: scale(5);
 }
 
-.texture-selector img.active{
+.texture-selector img.active {
   border: 1px solid red;
+}
+
+.menu {
+  top: 0px;
+  left: 10px;
 }
